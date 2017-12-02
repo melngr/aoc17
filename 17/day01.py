@@ -31,7 +31,7 @@ def read_captcha():
 Next step summing method.
 :param:     captcha, the string read in using method 'read_captcha()'
 :throws:    IndexError, if attempt to access value is outside of list
-:returns:   sum using method defined in part 'b'
+:returns:   sum using method defined in part 'a'
 '''
 def next_sum(captcha):
     total = 0
