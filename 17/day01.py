@@ -13,13 +13,13 @@ import sys
 
 '''
 File reader.
-:requires:  file 'captcha.txt' to exist in same directory
+:requires:  file 'day01-input.txt' to exist in same directory
 :throws:    IOError, if file cannot be opened
-:returns:   all info from 'captcha.txt' as a string
+:returns:   all info from 'day01-input.txt' as a string
 '''
 def read_captcha():
     try:
-        f = open("captcha.txt", 'r')
+        f = open("day01-input.txt", 'r')
         captcha = f.read().strip()
         f.close()
     except IOError as err:
