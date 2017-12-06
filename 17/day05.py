@@ -1,7 +1,7 @@
 '''
 Author:     Griffin Melnick, melnick.griffin@gmail.com
-File:       day03.py
-Purpose:    Advent of Code, day 3
+File:       day05.py
+Purpose:    Advent of Code, day 5
 '''
 
 import sys
@@ -12,7 +12,7 @@ import sys
 '''
 File reader method.
 :requires:  file 'day05-input.txt' exist in directory.
-:return:    list of ints will all values for input file.
+:return:    list of ints will all values from input file.
 :throws:    IOError, if file cannot be opened.
             ValueError, if file contains illegal letter.
 '''
