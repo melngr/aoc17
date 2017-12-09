@@ -1,9 +1,12 @@
 '''
 Author:     Griffin Melnick, melnick.griffin@gmail.com
 File:       day06.py
-Purpose:    Advent of Code, day 6
+Purpose:    Advent of Code 2017, day 6
+            Pulls in command line input of 'a' or 'b' to represent which set of
+            functions to call based on part.
 '''
 
+import os
 import sys
 
 # --------------------------------------------------------------
@@ -17,18 +20,22 @@ File reader method.
             ValueError, if file contains illegal letter.
 '''
 def read_banks():
+    pwd, input_file = os.path.dirname( __file__ ), "inputs/day06-input.txt"
+    path = os.path.join( pwd, input_file )
+
     try:
-        f = open( "day06-input.txt", 'r' )
-        banks = f.readline().strip().split(' ')
-        for i in range( len(banks) ):
-            try:
-                banks[i] = int( banks[i] )
-            except ValueError:
-                raise ValueError( "Illegal letter found in file." )
+        f = open( path, 'r' )
+    except:
+        raise RuntimeError( "Input file 'day06-input.txt' could not be opened." )
 
-    except IOError:
-        raise IOError( "Input file 'day06-input.txt' could not be opened." )
+    banks = f.readline().strip().split(' ')
+    for i in range( len(banks) ):
+        try:
+            banks[i] = int( banks[i] )
+        except ValueError:
+            raise ValueError( "Illegal letter found in file." )
 
+    f.close()
     return banks
 
 

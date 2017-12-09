@@ -1,11 +1,14 @@
 '''
 Author:     Griffin Melnick, melnick.griffin@gmail.com
 File:       day04.py
-Purpose:    Advent of Code, day 4
+Purpose:    Advent of Code 2017, day 4
+            Pulls in command line input of 'a' or 'b' to represent which set of
+            functions to call based on part.
 '''
 
 from collections import Counter
 import itertools
+import os
 import sys
 
 # --------------------------------------------------------------
@@ -18,16 +21,20 @@ File reader method.
 :throws:    IOError, if file cannot be opened.
 '''
 def read_file():
+    pwd, input_file = os.path.dirname( __file__ ), "inputs/day04-input.txt"
+    path = os.path.join( pwd, input_file )
+
     try:
-        f = open( "day04-input.txt", 'r' )
-        phrases = []
-        for line in f:
-            words = line.strip().split(' ')
-            phrases.append( words )
+        f = open( path, 'r' )
+    except:
+        raise RuntimeError( "Input file 'day04-input.txt' could not be opened." )
 
-    except IOError as err:
-        raise IOError( err )
+    phrases = []
+    for line in f:
+        words = line.strip().split(' ')
+        phrases.append( words )
 
+    f.close()
     return phrases
 
 
@@ -98,18 +105,17 @@ def part_b():
 # --------------------------------------------------------------
 
 if ( __name__ == "__main__" ):
-
     if ( len(sys.argv) != 2 ):
         if ( len(sys.argv) < 2 ):
-            raise IndexError( "USAGE => too few args" )
+            sys.stderr.write( "USAGE: too few args\n" )
         else:
-            raise IndexError( "USAGE => too many args" )
+            sys.stderr.write( "USAGE: too many args\n" )
 
     else:
         part = sys.argv[1]
-        if ( part.strip() == 'a' ):
+        if ( part.strip().lower() == 'a' ):
             part_a()
-        elif ( part.strip() == 'b' ):
+        elif ( part.strip().lower() == 'b' ):
             part_b()
         else:
-            raise RuntimeError( "USAGE => invalid argument" )
+            sys.stderr.write( "USAGE: invalid argument\n" )
