@@ -7,6 +7,7 @@ Purpose:    Advent of Code 2017, Day 2
 '''
 
 import itertools
+import os
 import sys
 
 # --------------------------------------------------------------
@@ -17,7 +18,7 @@ File reader.
 :requires:  file 'day02-input.txt' to exist in same directory
 :throws:    IOError, if file cannot be opened
 :returns:   all info from 'day02-input.txt' as a list of lists
-'''
+
 def read_spreadsheet():
     try:
         f = open("day02-input.txt", 'r')
@@ -27,6 +28,28 @@ def read_spreadsheet():
         f.close()
     except IOError as err:
         raise IOError( err )
+
+    return spreadsheet'''
+
+'''
+File reader.
+:requires:  file 'day02-input.txt' to exist in 'inputs' subdirectory.
+:returns:   all info from 'day02-input.txt' as a list of lists.
+:throws:    RuntimeError, if file cannot be opened.
+'''
+def read_spreadsheet():
+    pwd, input_file = os.path.dirname( __file__ ), "inputs/day02-input.txt"
+    path = os.path.join( pwd, input_file )
+
+    try:
+        f = open( path, 'r' )
+    except:
+        raise RuntimeError( "Input file 'day02-input.txt' could not be opened." )
+
+    spreadsheet = []
+    for line in f:
+        spreadsheet.append( line.strip().split() )
+    f.close()
 
     return spreadsheet
 
@@ -58,19 +81,19 @@ def total_checksum(spreadsheet):
     return checksum
 
 '''
-Checksum finding method using evenly divisible numbers.
+Row sum finding method using evenly divisible numbers.
 :param:     spreadsheet, a list of lists with ints
 :requires:  spreadsheet != None
-:returns:   checksum value of spreadsheet using method from part 'b'
+:returns:   rowsum value of spreadsheet using method from part 'b'
 '''
-def even_checksum(spreadsheet):
-    checksum = 0
+def even_row_sum(spreadsheet):
+    row_sum = 0
     for vals in spreadsheet:
         for x, y in itertools.combinations( sorted(vals), 2 ):
             if ( y % x == 0 ):
-                checksum += ( y // x )
+                row_sum += ( y // x )
 
-    return checksum
+    return row_sum
 
 # --------------------------------------------------------------
 
@@ -87,8 +110,8 @@ Runs part 'b' appropriate functions and prints result.
 '''
 def part_b():
     spreadsheet = convert( read_spreadsheet() )
-    sum = even_checksum(spreadsheet)
-    print( "The checksum is {0}.".format(sum) )
+    sum = even_row_sum(spreadsheet)
+    print( "The row sum is {0}.".format(sum) )
 
 # --------------------------------------------------------------
 # --------------------------------------------------------------
