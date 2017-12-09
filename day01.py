@@ -6,6 +6,7 @@ Purpose:    Advent of Code 2017, Day 1
             functions to call based on part.
 '''
 
+import os
 import sys
 
 # --------------------------------------------------------------
@@ -13,17 +14,21 @@ import sys
 
 '''
 File reader.
-:requires:  file 'day01-input.txt' to exist in same directory
-:throws:    IOError, if file cannot be opened
+:requires:  file 'day01-input.txt' to exist in 'inputs' subdirectory
+:throws:    RuntimeError, if file cannot be opened
 :returns:   all info from 'day01-input.txt' as a string
 '''
 def read_captcha():
+    pwd, input_file = os.path.dirname( __file__ ), "inputs/day01-input.txt"
+    path = os.path.join( pwd, input_file )
+
     try:
-        f = open("day01-input.txt", 'r')
-        captcha = f.read().strip()
-        f.close()
-    except IOError as err:
-        raise IOError( err )
+        f = open( path, 'r' )
+    except:
+        raise RuntimeError( "Input file could not be opened." )
+
+    captcha = f.read().strip()
+    f.close()
 
     return captcha
 
@@ -37,10 +42,7 @@ def next_sum(captcha):
     total = 0
 
     for i in range(0, len(captcha)):
-        if ( i != (len(captcha) - 1) ):
-            j = i + 1
-        else:
-            j = 0
+        j = ( i + 1 ) % len( captcha )
 
         try:
             at_i = captcha[i]
