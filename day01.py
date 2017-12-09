@@ -32,6 +32,7 @@ def read_captcha():
 
     return captcha
 
+
 '''
 Next step summing method.
 :param:     captcha, the string read in using method 'read_captcha()'
@@ -54,6 +55,7 @@ def next_sum(captcha):
             total += int(at_i)
 
     return total
+
 
 '''
 Half circle summing method.
@@ -80,7 +82,6 @@ def half_sum(captcha):
 
     return total
 
-# --------------------------------------------------------------
 
 '''
 Runs part 'a' appropriate functions and prints result.
@@ -89,6 +90,7 @@ def part_a():
     captcha = read_captcha()
     total = next_sum(captcha)
     print( "The CAPTCHA sum is {0}.".format(total) )
+
 
 '''
 Runs part 'b' appropriate functions and prints result.
@@ -101,20 +103,18 @@ def part_b():
 # --------------------------------------------------------------
 # --------------------------------------------------------------
 
-if __name__ == "__main__":
-    if ( len(sys.argv) == 2 ):
-        day = sys.argv[1]
-        if ( day.strip() == 'a' ):
-            part_a()
-
-        elif ( day.strip() == 'b' ):
-            part_b()
-
+if ( __name__ == "__main__" ):
+    if ( len(sys.argv) != 2 ):
+        if ( len(sys.argv) < 2 ):
+            sys.stderr.write( "USAGE: too few args\n" )
         else:
-            sys.stderr.write( "USAGE: invalid argument" )
+            sys.stderr.write( "USAGE: too many args\n" )
 
     else:
-        if ( len(sys.argv) < 2 ):
-            sys.stderr.write( "USAGE: too few args" )
+        part = sys.argv[1]
+        if ( part.strip().lower() == 'a' ):
+            part_a()
+        elif ( part.strip().lower() == 'b' ):
+            part_b()
         else:
-            sys.stderr.write( "USAGE: too many args" )
+            sys.stderr.write( "USAGE: invalid argument\n" )

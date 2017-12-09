@@ -1,26 +1,23 @@
 '''
 Author:     Griffin Melnick, melnick.griffin@gmail.com
 File:       day03.py
-Purpose:    Advent of Code, day 3
+Purpose:    Advent of Code 2017, day 3
+            Pulls in command line input of 'a' or 'b' to represent which set of
+            functions to call based on part.
 '''
 
 input_port = 265149
 
-import math
 import sys
 
 # --------------------------------------------------------------
 # --------------------------------------------------------------
 
-
-
-
 '''
 Run methods associated with part 'a'.
 '''
 def part_a():
-    distance = count_steps( input_port )
-    print( "Port {0} is {1} steps from the start.".format( input_port, distance ) )
+    return 0
 
 
 '''
@@ -34,18 +31,17 @@ def part_b():
 # --------------------------------------------------------------
 
 if ( __name__ == "__main__" ):
-
     if ( len(sys.argv) != 2 ):
         if ( len(sys.argv) < 2 ):
-            raise IndexError( "USAGE => too few args" )
+            sys.stderr.write( "USAGE: too few args\n" )
         else:
-            raise IndexError( "USAGE => too many args" )
+            sys.stderr.write( "USAGE: too many args\n" )
 
     else:
         part = sys.argv[1]
-        if ( part.strip() == 'a' ):
+        if ( part.strip().lower() == 'a' ):
             part_a()
-        elif ( part.strip() == 'b' ):
+        elif ( part.strip().lower() == 'b' ):
             part_b()
         else:
-            raise RuntimeError( "USAGE => invalid argument" )
+            sys.stderr.write( "USAGE: invalid argument\n" )

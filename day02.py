@@ -15,24 +15,6 @@ import sys
 
 '''
 File reader.
-:requires:  file 'day02-input.txt' to exist in same directory
-:throws:    IOError, if file cannot be opened
-:returns:   all info from 'day02-input.txt' as a list of lists
-
-def read_spreadsheet():
-    try:
-        f = open("day02-input.txt", 'r')
-        spreadsheet = []
-        for line in f:
-            spreadsheet.append( line.strip().split(' ') )
-        f.close()
-    except IOError as err:
-        raise IOError( err )
-
-    return spreadsheet'''
-
-'''
-File reader.
 :requires:  file 'day02-input.txt' to exist in 'inputs' subdirectory.
 :returns:   all info from 'day02-input.txt' as a list of lists.
 :throws:    RuntimeError, if file cannot be opened.
@@ -53,6 +35,7 @@ def read_spreadsheet():
 
     return spreadsheet
 
+
 '''
 List conversion from string to int.
 :param:     spreadsheet, a list of list with strings
@@ -68,6 +51,7 @@ def convert(spreadsheet):
 
     return int_spreadsheet
 
+
 '''
 Checksum finding method using max and min of each line.
 :param:     spreadsheet, a list of lists with ints
@@ -79,6 +63,7 @@ def total_checksum(spreadsheet):
     for vals in spreadsheet:
         checksum += ( max(vals, default = 0) - min(vals, default = 0) )
     return checksum
+
 
 '''
 Row sum finding method using evenly divisible numbers.
@@ -95,7 +80,6 @@ def even_row_sum(spreadsheet):
 
     return row_sum
 
-# --------------------------------------------------------------
 
 '''
 Runs part 'a' appropriate functions and prints result.
@@ -104,6 +88,7 @@ def part_a():
     spreadsheet = convert( read_spreadsheet() )
     sum = total_checksum(spreadsheet)
     print( "The checksum is {0}.".format(sum) )
+
 
 '''
 Runs part 'b' appropriate functions and prints result.
@@ -116,20 +101,18 @@ def part_b():
 # --------------------------------------------------------------
 # --------------------------------------------------------------
 
-if __name__ == "__main__":
-    if ( len(sys.argv) == 2 ):
-        day = sys.argv[1]
-        if ( day.strip() == 'a' ):
-            part_a()
-
-        elif ( day.strip() == 'b' ):
-            part_b()
-
-        else:
-            sys.stderr.write( "USAGE: invalid argument\n" )
-
-    else:
+if ( __name__ == "__main__" ):
+    if ( len(sys.argv) != 2 ):
         if ( len(sys.argv) < 2 ):
             sys.stderr.write( "USAGE: too few args\n" )
         else:
             sys.stderr.write( "USAGE: too many args\n" )
+
+    else:
+        part = sys.argv[1]
+        if ( part.strip().lower() == 'a' ):
+            part_a()
+        elif ( part.strip().lower() == 'b' ):
+            part_b()
+        else:
+            sys.stderr.write( "USAGE: invalid argument\n" )
