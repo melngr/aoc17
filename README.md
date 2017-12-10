@@ -1,7 +1,4 @@
-# aoc
+# aoc17
 
-My work does as a part of the annual Advent of Code competition. Advent of Code
-can be found at [adventofcode.com](http://adventofcode.com/).
-
-I started participating in 2017, but I will be working towards completing the
-two years that I missed.
+My work done throughout Advent of Code 2017. Puzzles and information can be found
+at [adventofcode.com/2017](http://adventofcode.com/2017).
