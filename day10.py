@@ -27,7 +27,7 @@ def read_lengths(part):
     try:
         f = open( path, 'r' )
     except:
-        raise RuntimeError( "Input file 'day09-input.txt' could not be opened." )
+        raise RuntimeError( "Input file 'day10-input.txt' could not be opened." )
 
     if ( part == 'a' ):
         try:
