@@ -70,6 +70,9 @@ def run(steps):
 
 
 '''
+Hexagonal distance calculation.
+:param:     final, endpoint of which to find the distance from the origin.
+:return:    distance using the hexagonal grid distance formula.
 '''
 def find_dist(final):
     return ( (abs(final[0]) + abs(final[1]) + abs(final[2])) // 2 )
