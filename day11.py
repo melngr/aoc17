@@ -16,7 +16,7 @@ import sys
 File reader method.
 :part:      determines whether or not the string should be split.
 :requires:  file 'day11.txt' to exist in 'inputs' subdirectory.
-:return:    string of groups.
+:return:    string of steps.
 :throws:    RuntimeError, if file cannot be opened.
 '''
 def read_steps():
