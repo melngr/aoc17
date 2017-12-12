@@ -16,18 +16,18 @@ import sys
 
 '''
 File reader method.
-:requires:  file 'day07-input.txt' to exist in 'inputs' subdirectory.
+:requires:  file 'day07.txt' to exist in 'inputs' subdirectory.
 :return:    list of strings with bank information.
 :throws:    RuntimeError, if file cannot be opened.
 '''
 def read_info():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day07-input.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "inputs/day07.txt"
     path = os.path.join( pwd, input_file )
 
     try:
         f = open( path, 'r' )
     except:
-        raise RuntimeError( "Input file 'day07-input.txt' could not be opened." )
+        raise RuntimeError( "Input file 'day07.txt' could not be opened." )
 
     info = []
     for line in f:
@@ -102,7 +102,6 @@ Run methods associated with part 'a'.
 def part_a():
     info = read_info()
     graph = build_graph(info)
-    print( graph )
     print( "The root node is {0}.".format( list(nx.topological_sort(graph))[0] ) )
 
 

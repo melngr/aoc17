@@ -14,18 +14,18 @@ import sys
 
 '''
 File reader.
-:requires:  file 'day01-input.txt' to exist in 'inputs' subdirectory.
-:returns:   all info from 'day01-input.txt' as a string.
+:requires:  file 'day01.txt' to exist in 'inputs' subdirectory.
+:returns:   all info from 'day01.txt' as a string.
 :throws:    RuntimeError, if file cannot be opened.
 '''
 def read_captcha():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day01-input.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "inputs/day01.txt"
     path = os.path.join( pwd, input_file )
 
     try:
         f = open( path, 'r' )
     except:
-        raise RuntimeError( "Input file 'day01-input.txt' could not be opened." )
+        raise RuntimeError( "Input file 'day01.txt' could not be opened." )
 
     captcha = f.read().strip()
     f.close()

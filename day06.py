@@ -14,19 +14,19 @@ import sys
 
 '''
 File reader method.
-:requires:  file 'day06-input.txt' exist in directory.
+:requires:  file 'day06.txt' exist in directory.
 :return:    list of ints will all values from input file.
 :throws:    IOError, if file cannot be opened.
             ValueError, if file contains illegal letter.
 '''
 def read_banks():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day06-input.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "inputs/day06.txt"
     path = os.path.join( pwd, input_file )
 
     try:
         f = open( path, 'r' )
     except:
-        raise RuntimeError( "Input file 'day06-input.txt' could not be opened." )
+        raise RuntimeError( "Input file 'day06.txt' could not be opened." )
 
     banks = f.readline().strip().split(' ')
     for i in range( len(banks) ):

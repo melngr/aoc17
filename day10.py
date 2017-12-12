@@ -15,19 +15,19 @@ import sys
 '''
 File reader method.
 :part:      determines whether or not the string should be split.
-:requires:  file 'day10-input.txt' to exist in 'inputs' subdirectory.
+:requires:  file 'day10.txt' to exist in 'inputs' subdirectory.
 :return:    string of groups.
 :throws:    RuntimeError, if file cannot be opened.
             ValueError, if illegal letter is found in input.
 '''
 def read_lengths(part):
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day10-input.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "inputs/day10.txt"
     path = os.path.join( pwd, input_file )
 
     try:
         f = open( path, 'r' )
     except:
-        raise RuntimeError( "Input file 'day10-input.txt' could not be opened." )
+        raise RuntimeError( "Input file 'day10.txt' could not be opened." )
 
     if ( part == 'a' ):
         try:

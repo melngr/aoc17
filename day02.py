@@ -15,18 +15,18 @@ import sys
 
 '''
 File reader.
-:requires:  file 'day02-input.txt' to exist in 'inputs' subdirectory.
-:returns:   all info from 'day02-input.txt' as a list of lists.
+:requires:  file 'day02.txt' to exist in 'inputs' subdirectory.
+:returns:   all info from 'day02.txt' as a list of lists.
 :throws:    RuntimeError, if file cannot be opened.
 '''
 def read_spreadsheet():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day02-input.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "inputs/day02.txt"
     path = os.path.join( pwd, input_file )
 
     try:
         f = open( path, 'r' )
     except:
-        raise RuntimeError( "Input file 'day02-input.txt' could not be opened." )
+        raise RuntimeError( "Input file 'day02.txt' could not be opened." )
 
     spreadsheet = []
     for line in f:

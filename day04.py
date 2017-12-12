@@ -16,18 +16,18 @@ import sys
 
 '''
 File reader method.
-:requires:  file 'day04-input.txt' to be in directory.
+:requires:  file 'day04.txt' to be in directory.
 :return:    list of list with all lines from source.
 :throws:    IOError, if file cannot be opened.
 '''
 def read_file():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day04-input.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "inputs/day04.txt"
     path = os.path.join( pwd, input_file )
 
     try:
         f = open( path, 'r' )
     except:
-        raise RuntimeError( "Input file 'day04-input.txt' could not be opened." )
+        raise RuntimeError( "Input file 'day04.txt' could not be opened." )
 
     phrases = []
     for line in f:
