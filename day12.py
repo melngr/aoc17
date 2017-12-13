@@ -1,7 +1,7 @@
 '''
 Author:     Griffin Melnick, melnick.griffin@gmail.com
-File:       day11.py
-Purpose:    Advent of Code 2017, day 11
+File:       day12.py
+Purpose:    Advent of Code 2017, day 12
             Pulls in command line input of 'a' or 'b' to represent which set of
             functions to call based on part.
 '''
