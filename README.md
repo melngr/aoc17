@@ -1,17 +1,19 @@
 # aoc17
 
-My work done throughout Advent of Code 2017. Puzzles and information can be found
-at [adventofcode.com/2017](http://adventofcode.com/2017).
+My work done throughout Advent of Code 2017. Information about AoC can be found
+at [adventofcode.com/2017/about](http://adventofcode.com/2017/about).
 
-Day 1:  Inverse Captcha  
-Day 2:  Corruption Checksum  
-Day 3:  Spiral Memory  
-Day 4:  High-Entropy Passphrases  
-Day 5:  A Maze of Twisty Trampolines, All Alike  
-Day 6:  Memory Reallocation  
-Day 7:  Recursive Circus  
-Day 8:  I Heard You Like Registers  
-Day 9:  Stream Processing  
-Day 10: Knot Hash  
-Day 11: Hex Ed  
-Day 12: Digital Plumber  
+| Day   | Title                                                                             |
+|-------|-----------------------------------------------------------------------------------|
+| 1     | [Inverse Captcha](http://adventofcode.com/2017/day/1)                             |
+| 2     | [Corruption Checksum](http://adventofcode.com/2017/day/2)                         |
+| 3     | [Spiral Memory](http://adventofcode.com/2017/day/3)                               |
+| 4     | [High-Entropy Passphrases](http://adventofcode.com/2017/day/4)                    |
+| 5     | [A Maze of Twisty Trampolines, All Alike](http://adventofcode.com/2017/day/5)     |
+| 6     | [Memory Reallocation](http://adventofcode.com/2017/day/6)                         |
+| 7     | [Recursive Circus](http://adventofcode.com/2017/day/7)                            |
+| 8     | [I Heard You Like Registers](http://adventofcode.com/2017/day/8)                  |
+| 9     | [Stream Processing](http://adventofcode.com/2017/day/9)                           |
+| 10    | [Knot Hash](http://adventofcode.com/2017/day/10)                                  |
+| 11    | [Hex Ed](http://adventofcode.com/2017/day/11)                                     |
+| 12    | [Digital Plumber](http://adventofcode.com/2017/day/12)                            |
