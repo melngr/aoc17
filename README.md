@@ -17,4 +17,5 @@ at [adventofcode.com/2017/about](http://adventofcode.com/2017/about).
 | 10    | [Knot Hash](http://adventofcode.com/2017/day/10)                                  |
 | 11    | [Hex Ed](http://adventofcode.com/2017/day/11)                                     |
 | 12    | [Digital Plumber](http://adventofcode.com/2017/day/12)                            |
+| 13    | [Packet Scanners](http://adventofcode.com/2017/day/13)                            |
 | 15    | [Dueling Generators](http://adventofcode.com/2017/day/15)                         |
