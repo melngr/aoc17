@@ -36,15 +36,6 @@ def read_firewall():
     except ValueError:
         raise ValueError( "Illegal letter found as depth and/or range." )
 
-    '''for line in f:
-        line = line.strip().split(':')
-        try:
-            depth = int( line[0].strip() )
-            scans = int( line[1].strip() )
-        except ValueError:
-            raise ValueError( "Illegal letter found as depth and/or range." )
-        firewall[ depth ] = scans'''
-
     f.close()
     return firewall
 
