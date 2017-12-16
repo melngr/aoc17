@@ -66,6 +66,7 @@ def sim_dance(dance, letters):
                     sub_len = int( move[ 1: ] )
                 except ValueError:
                     raise ValueError( "Illegal letter in list location." )
+                    return 1
 
                 letters = letters[ -sub_len: ] + letters[ :-sub_len ]
 
@@ -75,6 +76,7 @@ def sim_dance(dance, letters):
                     loc1, loc2 = int( locs[0] ), int( locs[1] )
                 except ValueError:
                     raise ValueError( "Illegal letter in list location." )
+                    return 1
 
                 letters[loc1], letters[loc2] = letters[loc2], letters[loc1]
 
@@ -85,6 +87,7 @@ def sim_dance(dance, letters):
 
             else:
                 raise RuntimeError( "Illegal instruction in dance moves." )
+                return 1
 
     memo[start] = ''.join( [ letter for letter in letters ] )
     return memo[start]
