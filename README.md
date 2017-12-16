@@ -18,4 +18,5 @@ at [adventofcode.com/2017/about](http://adventofcode.com/2017/about).
 | 11    | [Hex Ed](http://adventofcode.com/2017/day/11)                                     |
 | 12    | [Digital Plumber](http://adventofcode.com/2017/day/12)                            |
 | 13    | [Packet Scanners](http://adventofcode.com/2017/day/13)                            |
+| 14    | [Disk Defragmentation](http://adventofcode.com/2017/day/14)                       |
 | 15    | [Dueling Generators](http://adventofcode.com/2017/day/15)                         |
