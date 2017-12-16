@@ -113,8 +113,6 @@ Run methods associated with part 'a'.
 def part_a():
     key = read_key()
     hashed_grid = hash(key)
-    for row in hashed_grid:
-        print(row)
     filled = count_filled(hashed_grid)
     print( "There are {0} filled squares.".format(filled) )
     return 0
