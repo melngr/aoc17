@@ -20,3 +20,4 @@ at [adventofcode.com/2017/about](http://adventofcode.com/2017/about).
 | 13    | [Packet Scanners](http://adventofcode.com/2017/day/13)                            |
 | 14    | [Disk Defragmentation](http://adventofcode.com/2017/day/14)                       |
 | 15    | [Dueling Generators](http://adventofcode.com/2017/day/15)                         |
+| 16    | [Permutation Promenade](http://adventofcode.com/2017/day/16)                      |
