@@ -6,7 +6,6 @@ Purpose:    Advent of Code 2017, day 17
             functions to call based on part.
 '''
 
-from collections import deque
 import os
 import sys
 
