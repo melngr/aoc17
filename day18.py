@@ -6,7 +6,7 @@ Purpose:    Advent of Code 2017, day 18
             functions to call based on part.
 '''
 
-from collections import defaultdict
+from collections import defaultdict, deque
 import os
 import sys
 
@@ -116,11 +116,8 @@ def read_instructions():
     pwd, input_file = os.path.dirname( __file__ ), "inputs/day18.txt"
     path = os.path.join( pwd, input_file )
 
-    try:
-        f = open( path, 'r' )
-    except:
-        raise RuntimeError( "Input file 'day18.txt' could not be opened." )
-        return 1
+    try:    f = open( path, 'r' )
+    except: raise RuntimeError( "Input file 'day18.txt' could not be opened." )
 
     instructions = []
     for line in f:
@@ -143,28 +140,14 @@ def sim_instructions(regs, instructions):
     store = regs._store
 
     i = 0
-    while i < len( instructions ):
+    while 0 <= i < len( instructions ):
         instr = instructions[i]
 
-        if ( instr[0] == "snd" ):
-            last_snd = store[ instr[1] ]
-            i += 1
-
-        elif ( instr[0] == "set" ):
-            store[ instr[1] ] = regs.get( instr[2] )
-            i += 1
-
-        elif ( instr[0] == "add" ):
-            store[ instr[1] ] += regs.get( instr[2] )
-            i += 1
-
-        elif ( instr[0] == "mul" ):
-            store[ instr[1] ] *= regs.get( instr[2] )
-            i += 1
-
-        elif ( instr[0] == "mod" ):
-            store[ instr[1] ] %= regs.get( instr[2] )
-            i += 1
+        if ( instr[0] == "snd" ):   last_snd = store[ instr[1] ]
+        elif ( instr[0] == "set" ): store[ instr[1] ] = regs.get( instr[2] )
+        elif ( instr[0] == "add" ): store[ instr[1] ] += regs.get( instr[2] )
+        elif ( instr[0] == "mul" ): store[ instr[1] ] *= regs.get( instr[2] )
+        elif ( instr[0] == "mod" ): store[ instr[1] ] %= regs.get( instr[2] )
 
         elif ( instr[0] == "rcv" ):
             if ( regs.get( instr[1] ) != 0 ):
@@ -173,13 +156,68 @@ def sim_instructions(regs, instructions):
         elif ( instr[0] == "jgz" ):
             if ( regs.get( instr[1] ) > 0 ):
                 i += regs.get( instr[2] )
+                continue
+
+        else:   raise RuntimeError( "Illegal instruction found." )
+        i += 1
+
+    return 0
+
+
+'''
+:param:     regs, list with Registers.
+            instructions, list of lists with instructions in input file.
+:return:    number of values sent by program 1.
+:modifies:  regs0._store, regs1._store
+:effects:   applies concurrent instructions to all shallow copies.
+'''
+def sim_dual(regs, instructions):
+    sent, prog = 0, 0
+    stores = { 0: regs[0]._store, 1: regs[1]._store }
+    ind, state, queue = { 0: 0, 1: 0 }, { 0: 'g', 1: 'g' }, { 0: deque(), 1: deque() }
+    reg, i = stores[ prog ], ind[0]
+
+    while True:
+        instr = instructions[i]
+        if ( instr[0] == "snd" ):
+            if ( prog == 1 ): sent += 1
+            queue[prog].append( regs[prog].get(instr[1]) )
+
+        elif ( instr[0] == "set" ): reg[ instr[1] ] = regs[prog].get( instr[2] )
+        elif ( instr[0] == "add" ): reg[ instr[1] ] += regs[prog].get( instr[2] )
+        elif ( instr[0] == "mul" ): reg[ instr[1] ] *= regs[prog].get( instr[2] )
+        elif ( instr[0] == "mod" ): reg[ instr[1] ] %= regs[prog].get( instr[2] )
+
+        elif ( instr[0] == "rcv" ):
+            if ( queue[(1 - prog)] ):
+                state[prog] = 'g'
+                reg[ instr[1] ] = queue[(1 - prog)].popleft()
             else:
-                i += 1
+                if ( state[(1 - prog)] == 'd' ):
+                    break
+                if ( (len(queue[prog]) == 0) and (state[(1 - prog)] == 'r') ):
+                    break
+                
+                ind[ prog ], state[ prog ] = i, 'r'
+                prog = (1 - prog)
+                reg, i = stores[ prog ], ind[ prog ]
+                continue
 
-        else:
-            raise RuntimeError( "Illegal instruction found." )
+        elif ( instr[0] == "jgz" ):
+            if ( regs[prog].get(instr[1]) > 0 ):
+                i += regs[prog].get( instr[2] )
+                continue
 
-    return last_snd
+        i += 1
+        if ( not 0 <= i < len(instructions) ):
+            if state[(1 - prog)] == 'd':
+                break
+
+            ind[ prog ], state[ prog ] = i, 'd'
+            prog = (1 - prog)
+            reg, i = regs[ prog ], ind[ prog ]
+
+    return sent
 
 
 '''
@@ -200,6 +238,17 @@ def part_a():
 Run methods associated with part 'b'.
 '''
 def part_b():
+    instructions = read_instructions()
+    regs0, regs1 = Registers(), Registers()
+    for instr in instructions:
+        if ( instr[1].isalpha() ):
+            regs0.add( instr[1] )
+            regs1.add( instr[1] )
+    regs1.set('p', 1)
+    regs = { 0: regs0, 1: regs1 }
+
+    sent = sim_dual(regs, instructions)
+    print( "Program 1 sends {0} values.".format( sent ) )
     return 0
 
 

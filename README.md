@@ -22,3 +22,7 @@ at [adventofcode.com/2017/about](http://adventofcode.com/2017/about).
 | 15    | [Dueling Generators](http://adventofcode.com/2017/day/15)                         |
 | 16    | [Permutation Promenade](http://adventofcode.com/2017/day/16)                      |
 | 17    | [Spinlock](http://adventofcode.com/2017/day/17)                                   |
+| 18    | [Duet](http://adventofcode.com/2017/day/18)                                       |
+| 19    | [A Series of Tubes](http://adventofcode.com/2017/day/19)                          |
+| 20    | [Particle Swarm](http://adventofcode.com/2017/day/20)                             |
+| 23    | [Coprocessor Conflagration](http://adventofcode.com/2017/day/23)                  |
