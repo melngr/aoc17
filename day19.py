@@ -37,6 +37,7 @@ def read_diagram():
 
 
 '''
+Path following simulation method.
 :param:     list of strings from input file.
 :return:    list of characters seen along path as string.
             count of steps taken along path.
