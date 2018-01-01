@@ -16,9 +16,8 @@ import sys
 File reader method.
 :part:      determines whether or not the string should be split.
 :requires:  file 'day19.txt' to exist in 'inputs' subdirectory.
-:return:    string of groups.
+:return:    list of strings from input file.
 :throws:    RuntimeError, if file cannot be opened.
-            ValueError, if illegal letter is found in input.
 '''
 def read_diagram():
     pwd, input_file = os.path.dirname( __file__ ), "inputs/day19.txt"
@@ -28,7 +27,6 @@ def read_diagram():
         f = open( path, 'r' )
     except:
         raise RuntimeError( "Input file 'day19.txt' could not be opened." )
-        return 1
 
     diagram = []
     for line in f:
@@ -39,6 +37,11 @@ def read_diagram():
 
 
 '''
+:param:     list of strings from input file.
+:return:    list of characters seen along path as string.
+            count of steps taken along path.
+:throws:    RuntimeError, if direction is invalid.
+            RuntimeError, if character seen in grid is invalid.
 '''
 def follow(diagram):
     path, steps = "", 0
@@ -55,9 +58,14 @@ def follow(diagram):
             elif ( move in ('l', 'r') ):
                 if ( diagram[(y - 1)][x] != ' ' ):  move = 'u'
                 else:  move = 'd'
+            else:
+                raise RuntimeError( "Illegal direction used." )
 
         elif ( curr not in ('|', '-', ' ') ):
             path += curr
+
+        else:
+            raise RuntimeError( "Illegal character found in diagram." )
 
     return path, steps
 
