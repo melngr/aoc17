@@ -29,3 +29,4 @@ at [adventofcode.com/2017/about](http://adventofcode.com/2017/about).
 | 22    | [Sporifica Virus](http://adventofcode.com/2017/day/22)                            |
 | 23    | [Coprocessor Conflagration](http://adventofcode.com/2017/day/23)                  |
 | 24    | [Electromagnetic Moat](http://adventofcode.com/2017/day/24)                       |
+| 25    | [The Halting Problem](http://adventofcode.com/2017/day/25)                        |
