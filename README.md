@@ -26,5 +26,6 @@ at [adventofcode.com/2017/about](http://adventofcode.com/2017/about).
 | 19    | [A Series of Tubes](http://adventofcode.com/2017/day/19)                          |
 | 20    | [Particle Swarm](http://adventofcode.com/2017/day/20)                             |
 | 21    | [Fractal Art](http://adventofcode.com/2017/day/21)                                |
+| 22    | [Sporifica Virus](http://adventofcode.com/2017/day/22)                            |
 | 23    | [Coprocessor Conflagration](http://adventofcode.com/2017/day/23)                  |
 | 24    | [Electromagnetic Moat](http://adventofcode.com/2017/day/24)                       |
