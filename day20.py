@@ -62,7 +62,6 @@ class Particle:
 
 '''
 File reader method.
-:part:      determines whether or not the string should be split.
 :requires:  file 'day20.txt' to exist in 'inputs' subdirectory.
 :return:    defaultdict with Particles from input.
 :throws:    RuntimeError, if file cannot be opened.

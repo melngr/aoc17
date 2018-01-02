@@ -14,7 +14,6 @@ import sys
 
 '''
 File reader method.
-:part:      determines whether or not the string should be split.
 :requires:  file 'day19.txt' to exist in 'inputs' subdirectory.
 :return:    list of strings from input file.
 :throws:    RuntimeError, if file cannot be opened.
