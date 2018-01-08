@@ -20,7 +20,7 @@ File reader method.
             ValueError, if file contains illegal letter.
 '''
 def read_instructions():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day05.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day05.txt"
     path = os.path.join( pwd, input_file )
 
     try:

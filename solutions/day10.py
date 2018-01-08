@@ -21,7 +21,7 @@ File reader method.
             ValueError, if illegal letter is found in input.
 '''
 def read_lengths(part):
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day10.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day10.txt"
     path = os.path.join( pwd, input_file )
 
     try:

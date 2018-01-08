@@ -21,7 +21,7 @@ File reader method.
 :throws:    IOError, if file cannot be opened.
 '''
 def read_file():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day04.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day04.txt"
     path = os.path.join( pwd, input_file )
 
     try:

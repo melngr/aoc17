@@ -20,7 +20,7 @@ File reader method.
             ValueError, if letter found for port type.
 '''
 def read_ports():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day24.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day24.txt"
     path = os.path.join( pwd, input_file )
 
     try:    f = open( path, 'r' )

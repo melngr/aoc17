@@ -20,7 +20,7 @@ File reader method.
             ValueError, is letter found as step value.
 '''
 def read_step():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day17.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day17.txt"
     path = os.path.join( pwd, input_file )
 
     try:

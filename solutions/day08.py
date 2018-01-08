@@ -20,7 +20,7 @@ File reader method.
             RuntimeError, if illegal operation is called in instructions.
 '''
 def read_instructions():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day08.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day08.txt"
     path = os.path.join( pwd, input_file )
 
     try:

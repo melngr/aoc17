@@ -68,7 +68,7 @@ File reader method.
             ValueError, if illegal letter is found in input.
 '''
 def read_particles():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day20.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day20.txt"
     path = os.path.join( pwd, input_file )
 
     try:

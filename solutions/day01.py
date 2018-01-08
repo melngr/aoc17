@@ -19,7 +19,7 @@ File reader.
 :throws:    RuntimeError, if file cannot be opened.
 '''
 def read_captcha():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day01.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day01.txt"
     path = os.path.join( pwd, input_file )
 
     try:

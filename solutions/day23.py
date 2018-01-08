@@ -1,12 +1,12 @@
 '''
 Author:     Griffin Melnick, melnick.griffin@gmail.com
-File:       day18.py
-Purpose:    Advent of Code 2017, day 18
+File:       day23.py
+Purpose:    Advent of Code 2017, day 23
             Pulls in command line input of 'a' or 'b' to represent which set of
             functions to call based on part.
 '''
 
-from collections import defaultdict, deque
+from collections import defaultdict
 import os
 import sys
 
@@ -108,16 +108,16 @@ class Registers:
 
 '''
 File reader method.
-:requires:  file 'day18.txt' to exist in 'inputs' subdirectory.
+:requires:  file 'day23.txt' to exist in 'inputs' subdirectory.
 :return:    list of lists with instructions in input file.
 :throws:    RuntimeError, if file cannot be opened.
 '''
 def read_instructions():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day18.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day23.txt"
     path = os.path.join( pwd, input_file )
 
     try:    f = open( path, 'r' )
-    except: raise RuntimeError( "Input file 'day18.txt' could not be opened." )
+    except: raise RuntimeError( "Input file 'day23.txt' could not be opened." )
 
     instructions = []
     for line in f:
@@ -128,97 +128,53 @@ def read_instructions():
 
 
 '''
+Instruction simulation method.
 :param:     regs, Registers object holding value of each register.
             instructions, list of lists with instructions in input file.
-:return:    value of last sound frequency greater than zero played.
+:return:    count of times 'mul' is called.
 :throws:    RuntimeError, if illegal instruction is called.
 :modifies:  regs._store
 :effects:   applies instructions to shallow copy.
 '''
-def sim_instructions(regs, instructions):
-    last_snd = 0
+def sim(regs, instructions):
+    count = 0
     store = regs._store
 
     i = 0
     while 0 <= i < len( instructions ):
         instr = instructions[i]
 
-        if ( instr[0] == "snd" ):   last_snd = store[ instr[1] ]
-        elif ( instr[0] == "set" ): store[ instr[1] ] = regs.get( instr[2] )
-        elif ( instr[0] == "add" ): store[ instr[1] ] += regs.get( instr[2] )
-        elif ( instr[0] == "mul" ): store[ instr[1] ] *= regs.get( instr[2] )
-        elif ( instr[0] == "mod" ): store[ instr[1] ] %= regs.get( instr[2] )
+        if ( instr[0] == "set" ):   store[ instr[1] ] = regs.get( instr[2] )
+        elif ( instr[0] == "sub" ): store[ instr[1] ] -= regs.get( instr[2] )
 
-        elif ( instr[0] == "rcv" ):
+        elif ( instr[0] == "mul" ):
+            store[ instr[1] ] *= regs.get( instr[2] )
+            count += 1
+
+        elif ( instr[0] == "jnz" ):
             if ( regs.get( instr[1] ) != 0 ):
-                return last_snd
-
-        elif ( instr[0] == "jgz" ):
-            if ( regs.get( instr[1] ) > 0 ):
                 i += regs.get( instr[2] )
                 continue
 
         else:   raise RuntimeError( "Illegal instruction found." )
         i += 1
 
-    return 0
+    return count
 
 
 '''
-:param:     regs, list with Registers.
-            instructions, list of lists with instructions in input file.
-:return:    number of values sent by program 1.
-:modifies:  regs0._store, regs1._store
-:effects:   applies concurrent instructions to all shallow copies.
+Fancy way to find value of 'h'.
+:return:    value of 'h' based on composites.
 '''
-def sim_dual(regs, instructions):
-    sent, prog = 0, 0
-    stores = { 0: regs[0]._store, 1: regs[1]._store }
-    ind, state, queue = { 0: 0, 1: 0 }, { 0: 'g', 1: 'g' }, { 0: deque(), 1: deque() }
-    reg, i = stores[ prog ], ind[0]
-
-    while True:
-        instr = instructions[i]
-        if ( instr[0] == "snd" ):
-            if ( prog == 1 ): sent += 1
-            queue[prog].append( regs[prog].get(instr[1]) )
-
-        elif ( instr[0] == "set" ): reg[ instr[1] ] = regs[prog].get( instr[2] )
-        elif ( instr[0] == "add" ): reg[ instr[1] ] += regs[prog].get( instr[2] )
-        elif ( instr[0] == "mul" ): reg[ instr[1] ] *= regs[prog].get( instr[2] )
-        elif ( instr[0] == "mod" ): reg[ instr[1] ] %= regs[prog].get( instr[2] )
-
-        elif ( instr[0] == "rcv" ):
-            if ( queue[(1 - prog)] ):
-                state[prog] = 'g'
-                reg[ instr[1] ] = queue[(1 - prog)].popleft()
-            else:
-                if ( state[(1 - prog)] == 'd' ):
-                    break
-                if ( (len(queue[prog]) == 0) and (state[(1 - prog)] == 'r') ):
-                    break
-                
-                ind[ prog ], state[ prog ] = i, 'r'
-                prog = (1 - prog)
-                reg, i = stores[ prog ], ind[ prog ]
-                continue
-
-        elif ( instr[0] == "jgz" ):
-            if ( regs[prog].get(instr[1]) > 0 ):
-                i += regs[prog].get( instr[2] )
-                continue
-
-        i += 1
-        if ( not 0 <= i < len(instructions) ):
-            if state[(1 - prog)] == 'd':
+def find_h():
+    h = 0
+    for x in range( 107900, (124900 + 1), 17 ):
+        for i in range(2, x):
+            if ( x % i == 0 ):
+                h += 1
                 break
 
-            ind[ prog ], state[ prog ] = i, 'd'
-            prog = (1 - prog)
-            reg, i = regs[ prog ], ind[ prog ]
-
-    return sent
-
+    return h
 
 '''
 Run methods associated with part 'a'.
@@ -229,8 +185,8 @@ def part_a():
     for instr in instructions:
         if ( instr[1].isalpha() ):  regs.add( instr[1] )
 
-    last_snd = sim_instructions(regs, instructions)
-    print( "The last played frequency is {0}.".format(last_snd) )
+    mul_count = sim(regs, instructions, 'a')
+    print( "'mul' is called {0} times.".format(mul_count) )
     return 0
 
 
@@ -238,17 +194,8 @@ def part_a():
 Run methods associated with part 'b'.
 '''
 def part_b():
-    instructions = read_instructions()
-    regs0, regs1 = Registers(), Registers()
-    for instr in instructions:
-        if ( instr[1].isalpha() ):
-            regs0.add( instr[1] )
-            regs1.add( instr[1] )
-    regs1.set('p', 1)
-    regs = { 0: regs0, 1: regs1 }
-
-    sent = sim_dual(regs, instructions)
-    print( "Program 1 sends {0} values.".format( sent ) )
+    h = find_h()
+    print( "The value of register 'h' is {0}.".format(h) )
     return 0
 
 

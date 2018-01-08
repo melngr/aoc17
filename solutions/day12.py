@@ -22,7 +22,7 @@ File reader method.
             ValueError, if illegal letter is found in file.
 '''
 def read_pipes():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day12.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day12.txt"
     path = os.path.join( pwd, input_file )
 
     try:

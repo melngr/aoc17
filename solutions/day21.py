@@ -32,7 +32,7 @@ File reader method.
 :throws:    RuntimeError, if file cannot be opened.
 '''
 def read_data():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day21.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day21.txt"
     path = os.path.join( pwd, input_file )
 
     try:    f = open( path, 'r' )

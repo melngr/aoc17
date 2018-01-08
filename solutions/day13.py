@@ -21,7 +21,7 @@ File reader method.
             ValueError, if illegal letter is found in file.
 '''
 def read_firewall():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day13.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day13.txt"
     path = os.path.join( pwd, input_file )
 
     try:

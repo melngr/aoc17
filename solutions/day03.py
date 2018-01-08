@@ -19,7 +19,7 @@ File reader method.
             ValueError, if number cannot be cast to int.
 '''
 def read_num():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day03.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day03.txt"
     path = os.path.join( pwd, input_file )
 
     try:

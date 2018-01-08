@@ -20,7 +20,7 @@ File reader method.
 :throws:    RuntimeError, if file cannot be opened.
 '''
 def read_steps():
-    pwd, input_file = os.path.dirname( __file__ ), "inputs/day11.txt"
+    pwd, input_file = os.path.dirname( __file__ ), "../inputs/day11.txt"
     path = os.path.join( pwd, input_file )
 
     try:
